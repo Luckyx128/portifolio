@@ -15,13 +15,12 @@ export function Hero() {
         <h1 className="hero-title">Lucas de Amorim</h1>
         <p className="hero-sub">{t.heroSub}</p>
         <div className="hero-techline">
-          <span>TypeScript</span>
-          <span className="dot">·</span>
-          <span>React</span>
-          <span className="dot">·</span>
-          <span>Node.js</span>
-          <span className="dot">·</span>
-          <span>Flutter</span>
+          {["Flutter", "React", "Node.js", "TypeScript"].map((tech, i) => (
+            <span key={tech}>
+              {i > 0 && <span className="dot">· </span>}
+              {tech}
+            </span>
+          ))}
         </div>
         <div className="hero-cta">
           <a

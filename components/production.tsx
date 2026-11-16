@@ -11,18 +11,25 @@ export function Production() {
         <h2 className="section-label">{t.prodTitle}</h2>
         <div className="prod-card">
           <div className="prod-header">
-            <h3 className="prod-name">SIGRAAPP</h3>
+            <h3 className="prod-name">SIGRA</h3>
             <span className="prod-badge">{t.prodBadge}</span>
           </div>
           <p className="prod-body">{t.prodBody}</p>
-          <ul className="prod-list">
-            {t.prodBullets.map((bullet) => (
-              <li key={bullet}>
-                <span className="prod-marker">›</span>
-                <span>{bullet}</span>
-              </li>
+          <div className="prod-tracks">
+            {t.prodTracks.map((track) => (
+              <div className="prod-track" key={track.label}>
+                <div className="stack-group-label">{track.label}</div>
+                <ul className="prod-list">
+                  {track.items.map((item) => (
+                    <li key={item}>
+                      <span className="prod-marker">›</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
           <div className="prod-note">{t.prodNote}</div>
         </div>
       </div>

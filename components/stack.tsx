@@ -3,12 +3,16 @@
 import type { IconType } from "react-icons";
 import {
   SiDart,
+  SiDocker,
+  SiFastify,
   SiFirebase,
   SiFlutter,
-  SiGit,
-  SiGithub,
+  SiKotlin,
+  SiNextdotjs,
   SiNodedotjs,
-  SiPuppeteer,
+  SiPostgresql,
+  SiPrisma,
+  SiPython,
   SiReact,
   SiSwift,
   SiTypescript,
@@ -22,16 +26,20 @@ interface MarqueeIcon {
 }
 
 const MARQUEE_ICONS: MarqueeIcon[] = [
-  { label: "TypeScript", Icon: SiTypescript, color: "#3178c6" },
-  { label: "React", Icon: SiReact, color: "#61dafb" },
-  { label: "Node.js", Icon: SiNodedotjs, color: "#5fa04e" },
   { label: "Flutter", Icon: SiFlutter, color: "#54c5f8" },
   { label: "Dart", Icon: SiDart, color: "#0175c2" },
-  { label: "Swift", Icon: SiSwift, color: "#f05138" },
   { label: "Firebase / FCM", Icon: SiFirebase, color: "#ffca28" },
-  { label: "Puppeteer", Icon: SiPuppeteer, color: "#40b5a4" },
-  { label: "Git", Icon: SiGit, color: "#f05032" },
-  { label: "GitHub", Icon: SiGithub, color: "#9aa2ad" },
+  { label: "React", Icon: SiReact, color: "#61dafb" },
+  { label: "Next.js", Icon: SiNextdotjs, color: "#9aa2ad" },
+  { label: "TypeScript", Icon: SiTypescript, color: "#3178c6" },
+  { label: "Node.js", Icon: SiNodedotjs, color: "#5fa04e" },
+  { label: "Fastify", Icon: SiFastify, color: "#9aa2ad" },
+  { label: "Prisma", Icon: SiPrisma, color: "#5a67d8" },
+  { label: "PostgreSQL", Icon: SiPostgresql, color: "#4169e1" },
+  { label: "Swift", Icon: SiSwift, color: "#f05138" },
+  { label: "Kotlin", Icon: SiKotlin, color: "#7f52ff" },
+  { label: "Python", Icon: SiPython, color: "#3776ab" },
+  { label: "Docker", Icon: SiDocker, color: "#2496ed" },
 ];
 
 function MarqueeRun({ hidden }: { hidden?: boolean }) {

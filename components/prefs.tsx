@@ -4,13 +4,51 @@ import {
   createContext,
   useContext,
   useEffect,
-  useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 import { dictionaries, type Dictionary, type Lang, type Theme } from "@/lib/i18n";
 
 const THEME_KEY = "portfolio-theme";
 const LANG_KEY = "portfolio-lang";
+
+// Tiny external store over localStorage. The in-memory map keeps the toggles
+// working when storage is unavailable (private mode, blocked site data).
+const memory = new Map<string, string>();
+const listeners = new Set<() => void>();
+
+function subscribe(onChange: () => void) {
+  listeners.add(onChange);
+  window.addEventListener("storage", onChange);
+  return () => {
+    listeners.delete(onChange);
+    window.removeEventListener("storage", onChange);
+  };
+}
+
+function read(key: string): string | null {
+  try {
+    const value = localStorage.getItem(key);
+    if (value !== null) return value;
+  } catch {}
+  return memory.get(key) ?? null;
+}
+
+function write(key: string, value: string) {
+  memory.set(key, value);
+  try {
+    localStorage.setItem(key, value);
+  } catch {}
+  listeners.forEach((listener) => listener());
+}
+
+function useStored(key: string): string | null {
+  return useSyncExternalStore(
+    subscribe,
+    () => read(key),
+    () => null,
+  );
+}
 
 interface Prefs {
   theme: Theme;
@@ -23,34 +61,23 @@ interface Prefs {
 const PrefsContext = createContext<Prefs | null>(null);
 
 export function PrefsProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
-  const [lang, setLang] = useState<Lang>("en");
+  const storedTheme = useStored(THEME_KEY);
+  const storedLang = useStored(LANG_KEY);
+  const theme: Theme = storedTheme === "light" ? "light" : "dark";
+  const lang: Lang = storedLang === "pt" ? "pt" : "en";
 
-  // Sync with what the inline <head> script / a previous visit persisted.
+  // Skip while the value is null: that is the server snapshot during hydration,
+  // and the inline <head> script has already applied the persisted theme.
   useEffect(() => {
-    const storedTheme = localStorage.getItem(THEME_KEY);
-    if (storedTheme === "dark" || storedTheme === "light") setTheme(storedTheme);
-    const storedLang = localStorage.getItem(LANG_KEY);
-    if (storedLang === "en" || storedLang === "pt") setLang(storedLang);
-  }, []);
+    if (storedTheme) document.documentElement.dataset.theme = theme;
+  }, [storedTheme, theme]);
 
-  const toggleTheme = () => {
-    const next: Theme = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    document.documentElement.dataset.theme = next;
-    try {
-      localStorage.setItem(THEME_KEY, next);
-    } catch {}
-  };
+  useEffect(() => {
+    if (storedLang) document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+  }, [storedLang, lang]);
 
-  const toggleLang = () => {
-    const next: Lang = lang === "en" ? "pt" : "en";
-    setLang(next);
-    document.documentElement.lang = next === "pt" ? "pt-BR" : "en";
-    try {
-      localStorage.setItem(LANG_KEY, next);
-    } catch {}
-  };
+  const toggleTheme = () => write(THEME_KEY, theme === "dark" ? "light" : "dark");
+  const toggleLang = () => write(LANG_KEY, lang === "en" ? "pt" : "en");
 
   return (
     <PrefsContext.Provider

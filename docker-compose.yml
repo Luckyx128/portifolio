@@ -1,0 +1,17 @@
+# Routed by the Traefik already running on the VPS (docker provider, exposedbydefault=false).
+# Traefik uses network_mode: host, so it reaches this container on its bridge IP —
+# no published ports needed. Set DOMAIN in a .env file next to this file.
+services:
+  portfolio:
+    build:
+      context: .
+      args:
+        SITE_URL: https://${DOMAIN:?set DOMAIN in .env}
+    image: portfolio:latest
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.portfolio.rule=Host(`${DOMAIN}`)
+      - traefik.http.routers.portfolio.entrypoints=websecure
+      - traefik.http.routers.portfolio.tls.certresolver=letsencrypt
+      - traefik.http.services.portfolio.loadbalancer.server.port=3000

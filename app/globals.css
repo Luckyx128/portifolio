@@ -330,20 +330,32 @@ button {
   text-wrap: pretty;
 }
 
+.prod-tracks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 26px;
+}
+
+.prod-track {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
 .prod-list {
-  margin: 0 0 26px;
+  margin: 0;
   padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px 24px;
+  gap: 10px;
 }
 
 .prod-list li {
   display: flex;
   gap: 10px;
   align-items: baseline;
-  font-size: 15.5px;
+  font-size: 14.5px;
   line-height: 1.5;
 }
 
@@ -427,9 +439,40 @@ button {
   text-wrap: pretty;
 }
 
+.project-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
 .project-stack {
   font-family: var(--font-mono), monospace;
   font-size: 13px;
+  color: var(--acc);
+}
+
+.project-links {
+  display: flex;
+  gap: 8px;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 5px 11px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.project-link:hover {
+  border-color: var(--acc);
   color: var(--acc);
 }
 
@@ -585,7 +628,8 @@ button {
     gap: 20px;
   }
 
-  .stack-groups {
+  .stack-groups,
+  .prod-tracks {
     grid-template-columns: 1fr;
   }
 
@@ -595,10 +639,6 @@ button {
 }
 
 @media (max-width: 640px) {
-  .prod-list {
-    grid-template-columns: 1fr;
-  }
-
   .prod-card {
     padding: 26px 24px;
   }
