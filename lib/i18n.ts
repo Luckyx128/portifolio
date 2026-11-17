@@ -63,11 +63,11 @@ export const dictionaries: Record<Lang, Dictionary> = {
       "I build web and mobile products end to end — from the push notification on the server to the OTA patch on the user's phone.",
     aboutTitle: "About",
     aboutBody:
-      "Day to day I ship a Flutter app to the App Store and Google Play, with Shorebird code push for same-day fixes; write the Node.js/Fastify backend behind it — push notifications with Firebase, real-time updates over SSE, PDF and Excel reports; and build the React web app that talks to the same API. Outside work I go native: SwiftUI on macOS, WinUI on Windows, Kotlin on Android — and I self-host my own projects on a VPS with Docker and Traefik. I also study game development, which keeps me sharp on performance and real-time logic.",
+      "I've been writing software since 2021. I started by automating spreadsheets with VBA, moved on to Python, reached the web with Laravel and settled into the TypeScript ecosystem. At my first company I grew into a bigger role working on the system behind Caixa Econômica Federal's customer service, used by people all over Brazil. Today, at Ambiensys, I work across an entire product — Flutter app, Node.js API and React web app — used by companies nationwide. Outside work I explore native development (SwiftUI, WinUI, Kotlin), self-host my own projects and study game development, which keeps me focused on performance.",
     prodTitle: "In production",
     prodBadge: "iOS · Android · Web · Live",
     prodBody:
-      "Environmental and waste-management platform used daily in the field and in the office. I work across the whole product: the Flutter app, the Node.js services and the React web app.",
+      "Ambiensys' environmental and waste-management platform, used across Brazil and in operations abroad by large companies in retail, automotive, tech, media and food service. I work across the whole product: the Flutter app, the Node.js services and the React web app.",
     prodTracks: [
       {
         label: "Mobile · Flutter",
@@ -169,11 +169,11 @@ export const dictionaries: Record<Lang, Dictionary> = {
       "Construo produtos web e mobile de ponta a ponta — do push notification no servidor ao patch OTA no celular do usuário.",
     aboutTitle: "Sobre",
     aboutBody:
-      "No dia a dia publico um app Flutter na App Store e no Google Play, com code push via Shorebird para corrigir no mesmo dia; escrevo o backend Node.js/Fastify por trás dele — push notifications com Firebase, atualizações em tempo real via SSE, relatórios em PDF e Excel; e construo o web em React que consome a mesma API. Fora do trabalho vou para o nativo: SwiftUI no macOS, WinUI no Windows, Kotlin no Android — e hospedo meus próprios projetos numa VPS com Docker e Traefik. Também estudo desenvolvimento de jogos, o que me mantém afiado em performance e lógica em tempo real.",
+      "Desenvolvo software desde 2021. Comecei automatizando planilhas em VBA, passei pelo Python, cheguei ao web com Laravel e me firmei no ecossistema TypeScript. Na primeira empresa cresci de cargo trabalhando no sistema que apoia o SAC da Caixa Econômica Federal, usado por gente do Brasil inteiro. Hoje, na Ambiensys, atuo no produto inteiro — app Flutter, API em Node.js e web em React — usado por empresas de todo o país. Fora do trabalho exploro desenvolvimento nativo (SwiftUI, WinUI, Kotlin), hospedo meus próprios projetos e estudo desenvolvimento de jogos, o que me mantém atento a performance.",
     prodTitle: "Em produção",
     prodBadge: "iOS · Android · Web · No ar",
     prodBody:
-      "Plataforma de gestão ambiental e de resíduos usada todo dia em campo e no escritório. Atuo no produto inteiro: o app Flutter, os serviços Node.js e o web em React.",
+      "Plataforma de gestão ambiental e de resíduos da Ambiensys, usada em todo o Brasil e em operações fora do país por grandes empresas de varejo, automotivo, tecnologia, mídia e alimentação. Atuo no produto inteiro: o app Flutter, os serviços Node.js e o web em React.",
     prodTracks: [
       {
         label: "Mobile · Flutter",
